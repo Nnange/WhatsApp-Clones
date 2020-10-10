@@ -1,12 +1,46 @@
-import React from 'react'
-import "../CSS/Chat.css"
+import { Avatar, IconButton } from "@material-ui/core";
+import { AttachFile, MoreVert, SearchOutlined } from "@material-ui/icons";
+import React, { useEffect, useState } from "react";
+import "../CSS/Chat.css";
 
 const Chat = () => {
-    return (
-        <div className="chat">
-            <h1>Hey Chat</h1>
-        </div>
-    )
-}
+  const [seed, setSeed] = useState("");
 
-export default Chat
+  useEffect(() => {
+    setSeed(Math.floor(Math.random() * 5000));
+  }, []);
+
+  return (
+    <div className="chat">
+      <div className="chat__header">
+        <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+
+        <div className="chat__headerInfo">
+          <h3>Room Name</h3>
+          <p>Last seen at ...</p>
+        </div>
+        <div className="chat__headerRight">
+          <IconButton>
+            <SearchOutlined />
+          </IconButton>
+          <IconButton>
+            <AttachFile />
+          </IconButton>
+          <IconButton>
+            <MoreVert />
+          </IconButton>
+        </div>
+      </div>
+      <div className="chat__body">
+        <p className="chat__message">
+          <span className="chat__name">Skolosh</span>
+          Hey Guys
+          <span className="chat__timestamp">3:40pm</span>
+        </p>
+      </div>
+      <div className="chat__footer"></div>
+    </div>
+  );
+};
+
+export default Chat;
