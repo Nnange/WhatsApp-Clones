@@ -1,36 +1,42 @@
 import { Avatar } from "@material-ui/core";
-import React, {useEffect, useState} from "react";
+import { Unsubscribe } from "@material-ui/icons";
+import React, { useEffect, useState } from "react";
 import "../CSS/SidebarChat.css";
+import db from "../firebase";
 
-const SidebarChat = ({ addNewChat }) => {
+const SidebarChat = ({ id, name, addNewChat }) => {
+  const [seed, setSeed] = useState("");
 
-    const [seed, setSeed] = useState('');
+  useEffect(() => {
+    setSeed(Math.floor(Math.random() * 5000));
+  }, []);
 
-    useEffect(() => {
-        setSeed(Math.floor(Math.random()*5000));
-    }, []);
+  const createChat = () => {
+    const roomName = prompt("please enter name for chat");
 
-    const createChat = () => {
-        const roomName = prompt("please enter name for chat");
-
-        if (roomName){
-            // do some stuff in the database
-        }
+    if (roomName) {
+      // do some stuff in the database
+      db.collection('rooms').add({
+          name: roomName,
+      });
     }
+  };
+
+  
 
   return !addNewChat ? (
     <div className="sidebarChat">
-        <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
-        <div className="sidebarChat__info">
-            <h2>Room Name</h2>
-            <p>Last message...</p>
-        </div>
+      <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
+      <div className="sidebarChat__info">
+        <h2>{name}</h2>
+        <p>Last message...</p>
+      </div>
     </div>
   ) : (
-      <div onClick={createChat} className="sidebarChat">
-          <h2>Add new Chat</h2>
-      </div>
-  )
+    <div onClick={createChat} className="sidebarChat">
+      <h2>Add new Chat</h2>
+    </div>
+  );
 };
 
 export default SidebarChat;
