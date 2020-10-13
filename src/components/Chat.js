@@ -5,14 +5,27 @@ import MicIcon from "@material-ui/icons/Mic"
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import React, { useEffect, useState } from "react";
 import "../CSS/Chat.css";
+import { useParams } from "react-router-dom";
+import db from "../firebase";
 
 const Chat = () => {
   const [seed, setSeed] = useState("");
   const [input, setInput] = useState("");
+  const { roomId } =  useParams();
+  const [roomName, setRoomName] = useState("");
+
+  useEffect(()=> {
+        if(roomId) {
+            db
+            .collection('rooms')
+            .doc(roomId)
+            .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+        }
+  }, [roomId]);
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
-  }, []);
+  }, [roomId]);
 
   const sendMessage = (e) => {
         e.preventDefault();
@@ -26,7 +39,7 @@ const Chat = () => {
         <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
 
         <div className="chat__headerInfo">
-          <h3>Room Name</h3>
+          <h3>{roomName}</h3>
           <p>Last seen at ...</p>
         </div>
         <div className="chat__headerRight">
@@ -41,6 +54,8 @@ const Chat = () => {
           </IconButton>
         </div>
       </div>
+
+
       <div className="chat__body">
         <p className={`chat__message ${true && 'chat__receiver'}`}>
           <span className="chat__name">Skolosh</span>
@@ -48,6 +63,8 @@ const Chat = () => {
           <span className="chat__timestamp">3:40pm</span>
         </p>
       </div>
+
+
       <div className="chat__footer">
           <InsertEmoticonIcon />
           <span className="attachIcon"><AttachFileIcon /></span>
