@@ -1,21 +1,33 @@
-import React from 'react';
+import { Button } from "@material-ui/core";
+import { auth, provider } from "../firebase";
+import React from "react";
 import "../CSS/Login.css";
 const Login = () => {
-    return (
-        <div className="login">
-            <h1> Google Auth Login</h1>
-            <div className="login__container">
-                <img src="https://lh3.googleusercontent.com/qYEXlhwYdCseeGq1WlXApSluO_LcHJ2dSxvqmAXckY_8IXE2JPBfHpKq_7laiQeYJPGH7g=s85" alt=""/>
-                <div className="login__text">
-                    <h1>Sign in to WhatsApp</h1>
-                </div>
 
-                <Button type="submit" onClick={signIn}>
-                    Sign In with Google
-                </Button>
-            </div>
+  const signIn = () => {
+    auth
+    .signInWithPopup(provider)
+    .then(result => console.log(result))
+    .catch(error => alert(error.message));
+  };
+
+  return (
+    <div className="login">
+      <div className="login__container">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/598px-WhatsApp.svg.png"
+          alt=""
+        />
+        <div className="login__text">
+          <h1>Sign in to WhatsApp</h1>
         </div>
-    )
-}
 
-export default Login
+        <Button type="submit" onClick={signIn}>
+          Sign In with Google
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
