@@ -11,12 +11,11 @@ import { useStateValue } from "../StateProvider";
 import firebase from "firebase";
 
 const Chat = () => {
-  const [seed, setSeed] = useState("");
   const [input, setInput] = useState("");
   const { roomId } = useParams();
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, seed }, dispatch] = useStateValue();
 
   useEffect(() => {
     if (roomId) {
@@ -32,10 +31,6 @@ const Chat = () => {
           setMessages(snapshot.docs.map((doc) => doc.data()))
         );
     }
-  }, [roomId]);
-
-  useEffect(() => {
-    setSeed(Math.floor(Math.random() * 5000));
   }, [roomId]);
 
   const sendMessage = (e) => {
@@ -59,8 +54,10 @@ const Chat = () => {
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
           <p>
-            Last seen {" "}
-            {new Date(messages[messages.length -1]?.timestamp?.toDate()).toUTCString()}
+            Last seen{" "}
+            {new Date(
+              messages[messages.length - 1]?.timestamp?.toDate()
+            ).toUTCString()}
           </p>
         </div>
         <div className="chat__headerRight">
