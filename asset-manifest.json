@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/WhatsApp-Clones/static/css/main.a150da1a.chunk.css",
+    "main.css": "/WhatsApp-Clones/static/css/main.ae6c86ad.chunk.css",
     "main.js": "/WhatsApp-Clones/static/js/main.0a2e45dd.chunk.js",
     "main.js.map": "/WhatsApp-Clones/static/js/main.0a2e45dd.chunk.js.map",
     "runtime-main.js": "/WhatsApp-Clones/static/js/runtime-main.a814cc55.js",
@@ -8,15 +8,15 @@
     "static/js/2.9d34bf85.chunk.js": "/WhatsApp-Clones/static/js/2.9d34bf85.chunk.js",
     "static/js/2.9d34bf85.chunk.js.map": "/WhatsApp-Clones/static/js/2.9d34bf85.chunk.js.map",
     "index.html": "/WhatsApp-Clones/index.html",
-    "precache-manifest.391b6e16cca5e9b008dcfb88d2c7213d.js": "/WhatsApp-Clones/precache-manifest.391b6e16cca5e9b008dcfb88d2c7213d.js",
+    "precache-manifest.39ba714da7707eeea94931c8f6094bc8.js": "/WhatsApp-Clones/precache-manifest.39ba714da7707eeea94931c8f6094bc8.js",
     "service-worker.js": "/WhatsApp-Clones/service-worker.js",
-    "static/css/main.a150da1a.chunk.css.map": "/WhatsApp-Clones/static/css/main.a150da1a.chunk.css.map",
+    "static/css/main.ae6c86ad.chunk.css.map": "/WhatsApp-Clones/static/css/main.ae6c86ad.chunk.css.map",
     "static/js/2.9d34bf85.chunk.js.LICENSE.txt": "/WhatsApp-Clones/static/js/2.9d34bf85.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a814cc55.js",
     "static/js/2.9d34bf85.chunk.js",
-    "static/css/main.a150da1a.chunk.css",
+    "static/css/main.ae6c86ad.chunk.css",
     "static/js/main.0a2e45dd.chunk.js"
   ]
 }
