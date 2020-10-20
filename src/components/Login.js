@@ -1,14 +1,18 @@
 import { Button } from "@material-ui/core";
 import { auth, provider } from "../firebase";
-import React from "react";
+import React, { useState } from "react";
 import "../CSS/Login.css";
 import { actionTypes } from "../reducer";
 import { useStateValue } from "../StateProvider";
 
 
+
+
 const Login = () => {
 
     const [{}, dispatch] = useStateValue();
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const toggle = () => setDropdownOpen(prevState => !prevState);
 
   const signIn = () => {
     auth
@@ -37,6 +41,7 @@ const Login = () => {
           Sign In with Google
         </Button>
       </div>
+
     </div>
   );
 };
